@@ -1,22 +1,6 @@
-<p align="center">
-    <img src="./images/healthkit-googlefit.jpg" height="200px" />
-</p>
-
-# Health Data plugin for NativeScript
+# Fitness plugin for NativeScript
 This is a NativeScript plugin that abstracts Apple HealthKit and Google Fit to read health data from the user's device.
 
-[![Build Status][build-status]][build-url]
-[![NPM version][npm-image]][npm-url]
-[![Downloads][downloads-image]][npm-url]
-[![Twitter Follow][twitter-image]][twitter-url]
-
-[build-status]:https://travis-ci.org/EddyVerbruggen/nativescript-health-data.svg?branch=master
-[build-url]:https://travis-ci.org/EddyVerbruggen/nativescript-health-data
-[npm-image]:http://img.shields.io/npm/v/nativescript-health-data.svg
-[npm-url]:https://npmjs.org/package/nativescript-health-data
-[downloads-image]:http://img.shields.io/npm/dm/nativescript-health-data.svg
-[twitter-image]:https://img.shields.io/twitter/follow/eddyverbruggen.svg?style=social&label=Follow%20me
-[twitter-url]:https://twitter.com/eddyverbruggen
 
 ## Prerequisites
 
@@ -38,16 +22,16 @@ Make sure you enable the `HealthKit` entitlement in your app ID.
 Install the plugin using the NativeScript CLI:
 
 ```
-tns plugin add nativescript-health-data
+tns plugin add nativescript-fitness
 ```
 
 ## API 
-The examples below are all in TypeScript, and the [demo](https://github.com/EddyVerbruggen/nativescript-health-data/tree/master/demo-ng) was developed in Nativescript w/ Angular.
+The examples below are all in TypeScript, and the [demo](https://github.com/DonsWayo/nativescript-fitness/tree/master/demo-ng) was developed in Nativescript w/ Angular.
 
 This is how you can import and instantiate the plugin, all examples expect this setup:
 
 ```typescript
-import { AggregateBy, HealthData, HealthDataType } from "nativescript-health-data";
+import { AggregateBy, HealthData, HealthDataType } from "nativescript-fitness";
 
 export class MyHealthyClass {
   private healthData: HealthData;
@@ -208,6 +192,4 @@ The reason is I intend to support more units per type, but that is yet to be imp
 | fatPercentage | % | `TYPE_BODY_FAT_PERCENTAGE` | `HKQuantityTypeIdentifierBodyFatPercentage` |
 | cardio | min | `TYPE_HEART_POINTS` | `HKQuantityTypeIdentifierAppleExerciseTime` |
 
-## Credits
-* [Filipe Mendes](https://github.com/filipemendes1994/) for a superb first version of this repo, while working for SPMS, Shared Services for Ministry of Health (of Portugal). He kindly transferred this repo to me when he no longer had time to maintain it.
-* Daniel Leal, for [a great PR](https://github.com/EddyVerbruggen/nativescript-health-data/pull/4).
+
