@@ -32,13 +32,13 @@ The examples below are all in TypeScript, and the [demo](https://github.com/Dons
 This is how you can import and instantiate the plugin, all examples expect this setup:
 
 ```typescript
-import { AggregateBy, HealthData, HealthDataType } from "nativescript-fitness";
+import { AggregateBy, Fitness, FitnessType } from "nativescript-fitness";
 
 export class MyHealthyClass {
-  private healthData: HealthData;
+  private healthData: Fitness;
 
   constructor() {
-    this.healthData = new HealthData();
+    this.healthData = new Fitness();
   }
 }
 ```
@@ -54,7 +54,7 @@ this.healthData.isAvailable(false)
 ```
 
 ### `isAuthorized`
-This function (and the next one) takes an `Array` of `HealthDataType`'s. Each of those has a `name` and an `accessType`.
+This function (and the next one) takes an `Array` of `FitnessType`'s. Each of those has a `name` and an `accessType`.
 
 - The `name` can be one of the ['Available Data Types'](#available-data-types).
 - The accessType can be one of `read`, `write`, or `readAndWrite` (note that this plugin currently only supports reading data, but that will change).
@@ -62,17 +62,17 @@ This function (and the next one) takes an `Array` of `HealthDataType`'s. Each of
 > iOS is a bit silly here: if you've only requested 'read' access, you'll never get a `true` response from this method. [Details here.](https://stackoverflow.com/a/29128231/2596974)
 
 ```typescript
-this.healthData.isAuthorized([<HealthDataType>{name: "steps", accessType: "read"}])
+this.healthData.isAuthorized([<FitnessType>{name: "steps", accessType: "read"}])
     .then(authorized => console.log(authorized));
 ```
 
 ### `requestAuthorization`
-This function takes the same argument as `isAuthorized`, and will trigger a consent screen in case the user hasn't previously authorized your app to access any of the passed `HealthDataType`'s.
+This function takes the same argument as `isAuthorized`, and will trigger a consent screen in case the user hasn't previously authorized your app to access any of the passed `FitnessType`'s.
 
 Note that this plugin currently only supports reading data, but that will change.
  
 ```typescript
-const types: Array<HealthDataType> = [
+const types: Array<FitnessType> = [
 	{name: "height", accessType: "write"},
 	{name: "weight", accessType: "readAndWrite"},
 	{name: "steps", accessType: "read"},
@@ -100,7 +100,7 @@ this.healthData.query(
     {
       startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
       endDate: new Date(), // now
-      dataType: "steps", // equal to the 'name' property of 'HealthDataType'
+      dataType: "steps", // equal to the 'name' property of 'FitnessType'
       unit: "count", // make sure this is compatible with the 'dataType' (see below)
       aggregateBy: "day", // optional, one of: "hour", "day", "sourceAndDay"
       sortOrder: "desc" // optional, default "asc"
@@ -129,7 +129,7 @@ this.healthData.query(
      {
        startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
        endDate: new Date(), // now
-       dataType: "steps", // equal to the 'name' property of 'HealthDataType'
+       dataType: "steps", // equal to the 'name' property of 'FitnessType'
        unit: "count", // make sure this is compatible with the 'dataType' (see below)
        aggregateBy: "day", // optional, one of: "hour", "day" ; default: "day"
      })

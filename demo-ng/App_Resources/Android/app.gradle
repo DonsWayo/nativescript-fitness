@@ -8,7 +8,7 @@
 android {
   defaultConfig {
     generatedDensities = []
-    applicationId = "org.nativescript.plugindemo.healthdata"
+    applicationId = "org.nativescript.plugindemo.fitness"
   }
   aaptOptions {
     additionalParameters "--no-version-vectors"

@@ -1,21 +1,21 @@
 import {
   BackgroundUpdateFrequency,
   Common,
-  HealthDataApi,
-  HealthDataType,
+  FitnessApi,
+  FitnessType,
   QueryRequest,
   ResponseItem,
   StartMonitoringRequest,
   StopMonitoringRequest
 } from './health-data.common';
 
-export class HealthData extends Common implements HealthDataApi {
+export class Fitness extends Common implements FitnessApi {
   private healthStore: HKHealthStore;
   private monitorQueries: Map<string /* type */, HKObserverQuery> = new Map();
 
   constructor() {
     super();
-    if (HKHealthStore.isHealthDataAvailable()) {
+    if (HKHealthStore.isFitnessAvailable()) {
       this.healthStore = HKHealthStore.new();
     }
   }
@@ -26,7 +26,7 @@ export class HealthData extends Common implements HealthDataApi {
     });
   }
 
-  isAuthorized(types: Array<HealthDataType>): Promise<boolean> {
+  isAuthorized(types: Array<FitnessType>): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       if (this.healthStore === undefined) {
         reject("Health not available");
@@ -42,7 +42,7 @@ export class HealthData extends Common implements HealthDataApi {
     });
   }
 
-  requestAuthorization(types: Array<HealthDataType>): Promise<boolean> {
+  requestAuthorization(types: Array<FitnessType>): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       if (this.healthStore === undefined) {
         reject("Health not available");

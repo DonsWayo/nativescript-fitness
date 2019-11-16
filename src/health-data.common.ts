@@ -6,7 +6,7 @@ export interface ConfigurationData {
   typeOfData: string;
 }
 
-export interface HealthDataType {
+export interface FitnessType {
   name: string;
   accessType: "read" | "write" | "readAndWrite";
 }
@@ -98,12 +98,12 @@ export function createErrorResponse(action: string, description: string): ErrorR
 }
 */
 
-export interface HealthDataApi {
+export interface FitnessApi {
   isAvailable(updateGooglePlayServicesIfNeeded? /* for Android, default true */: boolean): Promise<boolean>;
 
-  isAuthorized(types: Array<HealthDataType>): Promise<boolean>;
+  isAuthorized(types: Array<FitnessType>): Promise<boolean>;
 
-  requestAuthorization(types: Array<HealthDataType>): Promise<boolean>;
+  requestAuthorization(types: Array<FitnessType>): Promise<boolean>;
 
   query(opts: QueryRequest): Promise<Array<ResponseItem>>;
 

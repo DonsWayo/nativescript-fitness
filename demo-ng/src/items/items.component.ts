@@ -1,6 +1,6 @@
 import { Component, NgZone } from "@angular/core";
 import { alert } from "tns-core-modules/ui/dialogs";
-import { AggregateBy, HealthData, HealthDataType } from "nativescript-health-data";
+import { AggregateBy, Fitness, FitnessType } from "nativescript-health-data";
 
 @Component({
   selector: "ItemsComponent",
@@ -9,7 +9,7 @@ import { AggregateBy, HealthData, HealthDataType } from "nativescript-health-dat
 })
 
 export class ItemsComponent {
-  private static TYPES: Array<HealthDataType> = [
+  private static TYPES: Array<FitnessType> = [
     {name: "height", accessType: "read"},
     {name: "weight", accessType: "readAndWrite"}, // just for show
     {name: "steps", accessType: "read"},
@@ -20,11 +20,11 @@ export class ItemsComponent {
     {name: "cardio", accessType: "read"}
   ];
 
-  private healthData: HealthData;
+  private healthData: Fitness;
   resultToShow = "";
 
   constructor(private zone: NgZone) {
-    this.healthData = new HealthData();
+    this.healthData = new Fitness();
   }
 
   isAvailable(): void {
@@ -33,7 +33,7 @@ export class ItemsComponent {
   }
 
   isAuthorized(): void {
-    this.healthData.isAuthorized([<HealthDataType>{name: "weight", accessType: "read"}])
+    this.healthData.isAuthorized([<FitnessType>{name: "weight", accessType: "read"}])
         .then(authorized => setTimeout(() => alert({
           title: "Authentication result",
           message: (authorized ? "" : "Not ") + "authorized for " + JSON.stringify(ItemsComponent.TYPES),

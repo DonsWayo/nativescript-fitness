@@ -1,7 +1,7 @@
 import {
   Common,
-  HealthDataApi,
-  HealthDataType,
+  FitnessApi,
+  FitnessType,
   QueryRequest,
   ResponseItem,
   StartMonitoringRequest,
@@ -33,7 +33,7 @@ const TimeUnit = java.util.concurrent.TimeUnit;
 const FitnessOptions = com.google.android.gms.fitness.FitnessOptions;
 const GoogleSignIn = com.google.android.gms.auth.api.signin.GoogleSignIn;
 
-export class HealthData extends Common implements HealthDataApi {
+export class Fitness extends Common implements FitnessApi {
   isAvailable(updateGooglePlayServicesIfNeeded = true): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       const gApi = GoogleApiAvailability.getInstance();
@@ -49,7 +49,7 @@ export class HealthData extends Common implements HealthDataApi {
     });
   }
 
-  isAuthorized(types: Array<HealthDataType>): Promise<boolean> {
+  isAuthorized(types: Array<FitnessType>): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       const fitnessOptionsBuilder = FitnessOptions.builder();
 
@@ -64,14 +64,14 @@ export class HealthData extends Common implements HealthDataApi {
     });
   }
 
-  requestAuthorization(types: Array<HealthDataType>): Promise<boolean> {
+  requestAuthorization(types: Array<FitnessType>): Promise<boolean> {
     return Promise.all([
       this.requestHardwarePermissions(),
       this.requestAuthorizationInternal(types)
     ]).then(results => Promise.resolve(results[0] && results[1]));
   }
 
-  requestAuthorizationInternal(types: Array<HealthDataType>): Promise<boolean> {    return new Promise<boolean>((resolve, reject) => {
+  requestAuthorizationInternal(types: Array<FitnessType>): Promise<boolean> {    return new Promise<boolean>((resolve, reject) => {
       const fitnessOptionsBuilder = FitnessOptions.builder();
 
       types.filter(t => t.accessType === "read" || t.accessType === "readAndWrite")
