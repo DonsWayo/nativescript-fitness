@@ -1,6 +1,7 @@
 # Fitness plugin for NativeScript
 This is a NativeScript plugin that abstracts Apple HealthKit and Google Fit to read health data from the user's device.
 
+This is a fork of [nativescript-health-data](https://github.com/EddyVerbruggen/nativescript-health-data)
 
 ## Prerequisites
 
