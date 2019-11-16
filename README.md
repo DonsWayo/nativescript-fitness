@@ -109,7 +109,7 @@ this.fitness.query(
     .catch(error => this.resultToShow = error);
 ```
 
-### `queryAggregateData`
+### `queryAggregateData` EXPERIMENTAL!
 
  Difference between `query` and `queryAggregateData`: if you use `query`, you will probably find that the number of steps (or other types of data) do not match those shown by the Google Fit and Apple Health apps.  If you wanted to accurately compute the user's data then use: `queryAggregateData`
 
