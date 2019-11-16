@@ -20,20 +20,20 @@ export class ItemsComponent {
     {name: "cardio", accessType: "read"}
   ];
 
-  private healthData: Fitness;
+  private fitness: Fitness;
   resultToShow = "";
 
   constructor(private zone: NgZone) {
-    this.healthData = new Fitness();
+    this.fitness = new Fitness();
   }
 
   isAvailable(): void {
-    this.healthData.isAvailable(true)
+    this.fitness.isAvailable(true)
         .then(available => this.resultToShow = available ? "Health Data available" : "Health Data not available :(");
   }
 
   isAuthorized(): void {
-    this.healthData.isAuthorized([<FitnessType>{name: "weight", accessType: "read"}])
+    this.fitness.isAuthorized([<FitnessType>{name: "weight", accessType: "read"}])
         .then(authorized => setTimeout(() => alert({
           title: "Authentication result",
           message: (authorized ? "" : "Not ") + "authorized for " + JSON.stringify(ItemsComponent.TYPES),
@@ -42,7 +42,7 @@ export class ItemsComponent {
   }
 
   requestAuthForVariousTypes(): void {
-    this.healthData.requestAuthorization(ItemsComponent.TYPES)
+    this.fitness.requestAuthorization(ItemsComponent.TYPES)
         .then(authorized => setTimeout(() => alert({
           title: "Authentication result",
           message: (authorized ? "" : "Not ") + "authorized for " + JSON.stringify(ItemsComponent.TYPES),
@@ -52,7 +52,7 @@ export class ItemsComponent {
   }
 
   getData(dataType: string, unit?: string, aggregateBy?: AggregateBy): Promise<void> {
-    return this.healthData.query(
+    return this.fitness.query(
         {
           startDate: new Date(new Date().getTime() - 24 * 60 * 60 * 1000), // 1 day ago
           endDate: new Date(), // now
@@ -71,7 +71,7 @@ export class ItemsComponent {
   }
 
   startMonitoringData(dataType: string, unit: string): void {
-    this.healthData.startMonitoring(
+    this.fitness.startMonitoring(
         {
           dataType: dataType,
           enableBackgroundUpdates: true,
@@ -86,7 +86,7 @@ export class ItemsComponent {
   }
 
   stopMonitoringData(dataType: string): void {
-    this.healthData.stopMonitoring(
+    this.fitness.stopMonitoring(
         {
           dataType: dataType,
         })

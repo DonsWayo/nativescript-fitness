@@ -35,10 +35,10 @@ This is how you can import and instantiate the plugin, all examples expect this 
 import { AggregateBy, Fitness, FitnessType } from "nativescript-fitness";
 
 export class MyHealthyClass {
-  private healthData: Fitness;
+  private fitness: Fitness;
 
   constructor() {
-    this.healthData = new Fitness();
+    this.fitness = new Fitness();
   }
 }
 ```
@@ -49,7 +49,7 @@ On Android the user will be prompted to (automatically) update their Play Servic
 If you don't want this behavior, pass false to this function, as shown below.
 
 ```typescript
-this.healthData.isAvailable(false)
+this.fitness.isAvailable(false)
     .then(available => console.log(available));
 ```
 
@@ -62,7 +62,7 @@ This function (and the next one) takes an `Array` of `FitnessType`'s. Each of th
 > iOS is a bit silly here: if you've only requested 'read' access, you'll never get a `true` response from this method. [Details here.](https://stackoverflow.com/a/29128231/2596974)
 
 ```typescript
-this.healthData.isAuthorized([<FitnessType>{name: "steps", accessType: "read"}])
+this.fitness.isAuthorized([<FitnessType>{name: "steps", accessType: "read"}])
     .then(authorized => console.log(authorized));
 ```
 
@@ -79,7 +79,7 @@ const types: Array<FitnessType> = [
 	{name: "distance", accessType: "read"}
 ];
 
-this.healthData.requestAuthorization(types)
+this.fitness.requestAuthorization(types)
     .then(authorized => console.log(authorized))
     .catch(error => console.log("Request auth error: ", error));
 ```
@@ -96,7 +96,7 @@ If you didn't run `requestAuthorization` before running `query`,
 the plugin will run `requestAuthorization` for you (for the requested `dataType`). You're welcome. 😉 
 
 ```typescript
-this.healthData.query(
+this.fitness.query(
     {
       startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
       endDate: new Date(), // now
@@ -125,7 +125,7 @@ this.healthData.query(
  the plugin will run `requestAuthorization` for you (for the requested `dataType`). You're welcome. 😉 
 
  ```typescript
- this.healthData.queryAggregateData(
+ this.fitness.queryAggregateData(
      {
        startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
        endDate: new Date(), // now
@@ -149,7 +149,7 @@ so your app may not always be invoked immediately when data is added/deleted in 
 > Background notifications probably don't work on the iOS simulator, so please test those on a real device.
 
 ```typescript
-this.healthData.startMonitoring(
+this.fitness.startMonitoring(
     {
       dataType: "heartRate",
       enableBackgroundUpdates: true,
@@ -167,7 +167,7 @@ this.healthData.startMonitoring(
 It's best to call this method in case you no longer wish to receive notifications when health data changes.
 
 ```typescript
-this.healthData.stopMonitoring(
+this.fitness.stopMonitoring(
     {
       dataType: "heartRate",
     })
