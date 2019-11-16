@@ -15,7 +15,7 @@ export class Fitness extends Common implements FitnessApi {
 
   constructor() {
     super();
-    if (HKHealthStore.isFitnessAvailable()) {
+    if (HKHealthStore.isHealthDataAvailable()) {
       this.healthStore = HKHealthStore.new();
     }
   }
