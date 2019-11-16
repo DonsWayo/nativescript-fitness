@@ -135,7 +135,7 @@ this.fitness.query(
      })
      .then(result => console.log(JSON.stringify(result)))
      .catch(error => this.resultToShow = error);
- `
+ ```
 
 ### `startMonitoring` (iOS only, for now)
 If you want to be notified when health data was changed, you can monitor specific types.
