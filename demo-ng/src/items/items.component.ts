@@ -1,6 +1,6 @@
 import { Component, NgZone } from "@angular/core";
 import { alert } from "tns-core-modules/ui/dialogs";
-import { AggregateBy, Fitness, FitnessType } from "nativescript-health-data";
+import { AggregateBy, Fitness, FitnessType } from "nativescript-fitness";
 
 @Component({
   selector: "ItemsComponent",

@@ -7,7 +7,7 @@ import {
   ResponseItem,
   StartMonitoringRequest,
   StopMonitoringRequest
-} from './health-data.common';
+} from './fitness.common';
 
 export class Fitness extends Common implements FitnessApi {
   private healthStore: HKHealthStore;

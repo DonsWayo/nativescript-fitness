@@ -6,7 +6,7 @@ import {
   ResponseItem,
   StartMonitoringRequest,
   StopMonitoringRequest
-} from './health-data.common';
+} from './fitness.common';
 import * as utils from 'tns-core-modules/utils/utils';
 import { ad } from 'tns-core-modules/utils/utils';
 import * as application from 'tns-core-modules/application';
