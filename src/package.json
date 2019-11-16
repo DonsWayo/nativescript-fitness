@@ -1,8 +1,8 @@
 {
-  "name": "nativescript-health-data",
+  "name": "nativescript-fitness",
   "version": "1.2.1",
-  "description": "Health Data plugin for Nativescript, using Google Fit and Apple HealthKit.",
-  "main": "health-data",
+  "description": "Google Fit and Apple HealthKit.",
+  "main": "fitness",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
@@ -36,8 +36,8 @@
     "Google Fit"
   ],
   "author": {
-    "name": "Eddy Verbruggen",
-    "email": "eddyverbruggen@gmail.com"
+    "name": "DonsWayo",
+    "email": "djwayomix@gmail.com"
   },
   "contributors": [
     {
@@ -47,13 +47,21 @@
     {
       "name": "Daniel Leal",
       "url": "https://github.com/danielgek"
+    },
+    {
+      "name": "Eddy Verbruggen",
+      "email": "eddyverbruggen@gmail.com"
+    },
+    {
+      "name": "Sebastian Lopez",
+      "url": "https://github.com/sebalopezz"
     }
   ],
   "bugs": {
-    "url": "https://github.com/filipemendes1994/nativescript-health-data/issues"
+    "url": "https://github.com/DonsWayo/nativescript-fitness/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/filipemendes1994/nativescript-health-data",
+  "homepage": "https://github.com/DonsWayo/fitness",
   "readmeFilename": "README.md",
   "devDependencies": {
     "tns-core-modules": "~6.0.0",
