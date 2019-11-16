@@ -1,6 +1,6 @@
 {
   "name": "nativescript-fitness",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Google Fit and Apple HealthKit.",
   "main": "fitness",
   "typings": "index.d.ts",
